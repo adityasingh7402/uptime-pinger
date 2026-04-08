@@ -1,0 +1,24 @@
+name: Ping Uptime APIs
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping APIs
+        run: |
+          urls=(
+            "https://ai-visibility-backend-hrxg.onrender.com/uptime/ping"
+            "https://render-chat-server-d2ya.onrender.com/health"
+          )
+
+          for url in "${urls[@]}"; do
+            echo "Pinging $url"
+            curl -fsS --max-time 20 "$url" || echo "Failed: $url"
+            echo ""
+          done
