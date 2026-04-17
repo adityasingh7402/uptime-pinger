@@ -13,8 +13,7 @@ jobs:
       - name: Ping APIs
         run: |
           urls=(
-            "https://ai-visibility-backend-hrxg.onrender.com/uptime/ping"
-            "https://render-chat-server-d2ya.onrender.com/health"
+            "https://render-chat-server-olbd.onrender.com/health"
           )
 
           for url in "${urls[@]}"; do
